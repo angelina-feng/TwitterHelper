@@ -40,9 +40,13 @@ def handle_client(connection, address):
                 print(f"[CLIENT] <{address[0]}:{address[1]}> Received: {data}")
 
                 # Simple command example, sending "GET name" will return "here is the data for name"
+                
                 if data.startswith("GET") and len(data.split()) > 1:
                     to_get = data.split()[1]
                     response = "here is the data for " + to_get
+                elif data.startswith("SEARCH") and len(data.split()) > 1:
+                    to_search = data.split()[1]
+                    response = "searching " + to_search
 
                 # If the message does not match any command
                 else:
